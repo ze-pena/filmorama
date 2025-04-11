@@ -1,0 +1,120 @@
+@function convert-to-rem($fontSize, $RemDefaultSize: 16) {
+  @return calc($fontSize / $RemDefaultSize);
+}
+
+@mixin text-break {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin item-point($position: top, $size: 12px, $color: #41c6cc) {
+  &::before {
+    content: '';
+    width: $size;
+    height: $size;
+    background-color: $color;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+
+    @if $position == top {
+      top: 6px;
+    }
+
+    @if $position == center {
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    @if $position == bottom {
+      bottom: 6px;
+    }
+  }
+}
+
+@mixin font-custom(
+  $min-fs,
+  $max-fs,
+  $textAlign: left,
+  $fontFamily: 'K2D Regular',
+  $color: #181a20
+) {
+  $min-fs-rem: converters.convert-to-rem($min-fs) + rem;
+  $max-fs-rem: converters.convert-to-rem($max-fs) + rem;
+
+  $min-lh-rem: converters.convert-to-rem(calc($min-fs * 1.5)) + rem;
+  $max-lh-rem: converters.convert-to-rem(calc($max-fs * 1.5)) + rem;
+
+  $min-ws: 280;
+  $max-ws: 1920;
+
+  $fluid-fs: calc(
+    converters.convert-to-rem($max-fs) - converters.convert-to-rem($min-fs)
+  );
+
+  $fluid-ws: calc(
+    converters.convert-to-rem($max-ws) - converters.convert-to-rem($min-ws)
+  );
+
+  $fluid-slope: calc($fluid-fs / $fluid-ws);
+
+  $fluid-intersection: calc(
+    converters.convert-to-rem($min-fs) -
+      ($fluid-slope * converters.convert-to-rem($min-ws))
+  );
+
+  $slope-vw: calc($fluid-slope * 100) + vw;
+  $intersection-fs-rem: $fluid-intersection + rem;
+  $intersection-lh-rem: calc($fluid-intersection * 1.5) + rem;
+
+  text-align: $textAlign;
+  font-family: $fontFamily;
+  font-size: clamp(
+    $min-fs-rem,
+    calc($intersection-fs-rem + $slope-vw),
+    $max-fs-rem
+  );
+
+  line-height: clamp(
+    $min-lh-rem,
+    calc($intersection-lh-rem + $slope-vw),
+    $max-lh-rem
+  );
+
+  color: $color;
+}
+
+@mixin separator(
+  $size: 15%,
+  $padding: 24px,
+  $position: center,
+  $color: #41c6cc
+) {
+  position: relative;
+  padding-bottom: $padding;
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    width: $size;
+    height: 2px;
+    background-color: $color;
+    border-radius: 8px;
+
+    @if $position == left {
+      left: 0;
+    }
+
+    @if $position == center {
+      $halfSize: calc($size / 2);
+      left: calc(50% - $halfSize);
+    }
+
+    @if $position == right {
+      right: 0;
+    }
+  }
+}

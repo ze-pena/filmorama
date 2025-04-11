@@ -1,0 +1,10 @@
+@mixin card(
+  $borderRadius: 8px,
+  $backgroundColor: #ffffff,
+  $shadowColor: #0000001a
+) {
+  border: 0;
+  border-radius: $borderRadius;
+  background-color: $backgroundColor;
+  box-shadow: 0px 1px 4px 0px $shadowColor;
+}

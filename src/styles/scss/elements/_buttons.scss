@@ -1,0 +1,84 @@
+@use 'converters' as *;
+@use 'colors' as *;
+
+@mixin button-preset($presetSize: medium) {
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  background-color: $color-pri-1;
+  white-space: pre-wrap;
+  text-align: center;
+  font-family: 'K2D Light';
+  color: $neutral-6;
+  transition: filter 0.5s ease;
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &:hover {
+      filter: contrast(115%);
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: grayscale(40%);
+  }
+
+  &[data-visibility='show'] {
+    animation: fade-in 0.5s ease-in normal forwards;
+  }
+
+  &[data-visibility='hide'] {
+    animation: fade-out 0.5s ease-out normal forwards;
+  }
+
+  @if $presetSize == small {
+    padding: 12px 24px;
+    font-size: 1rem;
+    line-height: calc(1rem * 1.5);
+  }
+
+  @if $presetSize == medium {
+    padding: 12px 48px;
+    font-size: 1.25rem;
+    line-height: calc(1.25rem * 1.5);
+  }
+
+  @if $presetSize == large {
+    padding: 12px 56px;
+    font-size: 1.5rem;
+    line-height: calc(1.5rem * 1.5);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    display: none;
+  }
+  1% {
+    display: -webkit-box;
+    opacity: 0;
+  }
+  100% {
+    display: -webkit-box;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    display: -webkit-box;
+    opacity: 1;
+  }
+  99% {
+    display: -webkit-box;
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}
