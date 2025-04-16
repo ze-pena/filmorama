@@ -1,0 +1,87 @@
+@use '../../../styles/scss/variables/colors' as *;
+@use '../../../styles/scss/variables/shadows' as *;
+@use '../../../styles/scss/mixins/typography' as *;
+
+.movie-card {
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: $shadow-primary-1;
+
+  img {
+    flex-grow: 1;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &:hover &__top,
+  &__top.--favorite {
+    opacity: 1;
+  }
+
+  &__top {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px 16px 8px;
+    width: 100%;
+    transition: opacity 500ms ease;
+
+    &__favorite {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: 0;
+      background-color: transparent;
+
+      i {
+        font-size: 1.75rem;
+
+        &.fa-regular {
+          color: $movie-card-not-favorite;
+        }
+
+        &.fa-solid {
+          color: $movie-card-is-favorite;
+        }
+      }
+    }
+  }
+
+  &:hover &__bottom {
+    opacity: 1;
+  }
+
+  &__bottom {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 16px 8px;
+    width: 100%;
+    background-color: $movie-card-background;
+    transition: opacity 500ms ease;
+
+    &__name {
+      @include font-custom(12, 14, left, 'Inter', 400, $movie-card-font);
+    }
+
+    &__year {
+      @include font-custom(10, 12, left, 'Inter', 400, $movie-card-font);
+    }
+  }
+}
