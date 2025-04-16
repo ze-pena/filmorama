@@ -38,31 +38,27 @@
   $min-fs,
   $max-fs,
   $textAlign: left,
-  $fontFamily: 'K2D Regular',
+  $fontFamily: 'Outfit',
+  $fontWeight: 400,
   $color: #181a20
 ) {
-  $min-fs-rem: converters.convert-to-rem($min-fs) + rem;
-  $max-fs-rem: converters.convert-to-rem($max-fs) + rem;
+  $min-fs-rem: convert-to-rem($min-fs) + rem;
+  $max-fs-rem: convert-to-rem($max-fs) + rem;
 
-  $min-lh-rem: converters.convert-to-rem(calc($min-fs * 1.5)) + rem;
-  $max-lh-rem: converters.convert-to-rem(calc($max-fs * 1.5)) + rem;
+  $min-lh-rem: convert-to-rem(calc($min-fs * 1.5)) + rem;
+  $max-lh-rem: convert-to-rem(calc($max-fs * 1.5)) + rem;
 
   $min-ws: 280;
   $max-ws: 1920;
 
-  $fluid-fs: calc(
-    converters.convert-to-rem($max-fs) - converters.convert-to-rem($min-fs)
-  );
+  $fluid-fs: calc(convert-to-rem($max-fs) - convert-to-rem($min-fs));
 
-  $fluid-ws: calc(
-    converters.convert-to-rem($max-ws) - converters.convert-to-rem($min-ws)
-  );
+  $fluid-ws: calc(convert-to-rem($max-ws) - convert-to-rem($min-ws));
 
   $fluid-slope: calc($fluid-fs / $fluid-ws);
 
   $fluid-intersection: calc(
-    converters.convert-to-rem($min-fs) -
-      ($fluid-slope * converters.convert-to-rem($min-ws))
+    convert-to-rem($min-fs) - ($fluid-slope * convert-to-rem($min-ws))
   );
 
   $slope-vw: calc($fluid-slope * 100) + vw;
@@ -76,13 +72,12 @@
     calc($intersection-fs-rem + $slope-vw),
     $max-fs-rem
   );
-
+  font-weight: $fontWeight;
   line-height: clamp(
     $min-lh-rem,
     calc($intersection-lh-rem + $slope-vw),
     $max-lh-rem
   );
-
   color: $color;
 }
 

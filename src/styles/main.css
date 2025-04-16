@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  src: url(./assets/fonts/Inter/inter_variable_weight.ttf);
+  src: url(../assets/fonts/Inter/inter_variable_weight.ttf);
   font-weight: 125 950;
   font-stretch: 75% 125%;
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'Outfit';
   font-style: normal;
-  src: url(./assets/fonts/Outfit/outfit_variable_weight.ttf);
+  src: url(../assets/fonts/Outfit/outfit_variable_weight.ttf);
   font-weight: 125 950;
   font-stretch: 75% 125%;
 }
@@ -18,5 +18,5 @@
   font-family: 'Pacifico';
   font-style: normal;
   font-weight: 400;
-  src: url(./assets/fonts/Pacifico/pacifico_regular.ttf);
+  src: url(../assets/fonts/Pacifico/pacifico_regular.ttf);
 }

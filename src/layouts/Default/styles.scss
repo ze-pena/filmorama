@@ -1,0 +1,120 @@
+@use '../../styles/scss/elements/scroll' as *;
+@use '../../styles/scss/mixins/typography' as *;
+@use '../../styles/scss/variables/colors' as *;
+@use '../../styles/scss/variables/viewports' as *;
+
+.default {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: $page-background;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    background-color: $header-background;
+    padding: 16px 32px;
+
+    &__navigation {
+      flex-grow: 1;
+      display: flex;
+      gap: 16px;
+      max-width: 1040px;
+
+      &__title {
+        flex-basis: 300px;
+        display: flex;
+        align-items: center;
+
+        h4 {
+          @include font-custom(24, 40, left, 'Pacifico', 300, $link-font);
+        }
+      }
+
+      &__list {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+
+        li {
+          display: flex;
+
+          a {
+            @include font-custom(12, 16, center, 'Inter', 400, $link-font);
+            background-color: $link-background;
+            padding: 8px 16px;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  &__body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden auto;
+    @include scrollbox($page-background);
+    @include scrollbar(10px, $scroll-thumb, $scroll-track);
+
+    &__main {
+      flex-grow: 1;
+      display: flex;
+      width: 100%;
+      max-width: 1040px;
+
+      &__container {
+        flex-grow: 1;
+        display: flex;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 24px 16px 32px;
+      background-color: $footer-background;
+
+      &__container {
+        flex-grow: 1;
+        display: flex;
+        max-width: 1040px;
+
+        menu {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          li {
+            a {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              color: $link-font;
+
+              &:hover,
+              &:active {
+                color: $link-font-alternative;
+              }
+
+              i {
+                font-size: 0.85rem;
+                color: inherit;
+              }
+
+              span {
+                @include font-custom(12, 16, center, 'Inter', 400, inherit);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

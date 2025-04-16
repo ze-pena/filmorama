@@ -1,5 +1,6 @@
 {
   "name": "filmorama",
+  "homepage": "https://ze-pena.github.io/filmorama",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -34,4 +35,3 @@
     "vite": "^6.2.0"
   }
 }
-

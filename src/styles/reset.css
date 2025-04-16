@@ -89,11 +89,6 @@ html {
   font-size: 16px;
 }
 
-body {
-  width: clamp(100vw, 100%, 100dvw);
-  height: clamp(100vh, 100%, 100dvh);
-}
-
 ol,
 ul {
   list-style: none;
@@ -123,8 +118,13 @@ menu {
   list-style: none;
 }
 
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
   text-decoration: none;
+  color: inherit;
 }
 
 *,
@@ -134,4 +134,10 @@ a {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+#root {
+  display: flex;
+  width: max(100vw, 100dvw);
+  height: max(100vh, 100dvh);
 }
