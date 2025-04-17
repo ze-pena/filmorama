@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import classNames from 'classnames';
 import { Movie } from './types';
 import './styles.scss';
@@ -35,4 +35,4 @@ function MovieCard(props: Movie) {
   );
 }
 
-export default MovieCard;
+export default memo(MovieCard);
