@@ -51,7 +51,7 @@ function Default() {
               </li>
               <li
                 className={classNames({
-                  '--is-current': location.pathname === '/categories',
+                  '--is-current': location.pathname.includes('/categories'),
                 })}>
                 <Link to="/categories">
                   <i className="fa-solid fa-list"></i>
