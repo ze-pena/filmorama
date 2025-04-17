@@ -1,0 +1,32 @@
+@use '../../../styles/scss/variables/colors' as *;
+@use '../../../styles/scss/variables/shadows' as *;
+@use '../../../styles/scss/mixins/typography' as *;
+
+.genre-card {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: $shadow-primary-1;
+
+  &__button {
+    cursor: pointer;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 16px 8px;
+    outline: none;
+    border: 0;
+    background-color: $genre-card-background;
+    transition: background-color 500ms linear;
+
+    &:hover {
+      background-color: $genre-card-background-alternative;
+    }
+
+    &__name {
+      @include font-custom(24, 32, left, 'Pacifico', 400, $genre-card-font);
+    }
+  }
+}
