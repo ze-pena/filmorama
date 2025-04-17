@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import MovieCard from '@components/cards/MovieCard';
 
-import { MovieList } from './types';
+import { StoreState } from '@interfaces/Redux';
+
 import './styles.scss';
 
 function Favorites() {
-  const [movieList] = useState<MovieList | null>(null);
+  const moviesList = useSelector((state: StoreState) => state.favorites);
 
   return (
     <div className="favorites">
@@ -26,9 +27,9 @@ function Favorites() {
       </div>
 
       <div className="favorites__bottom">
-        {movieList && (
+        {moviesList.length > 0 && (
           <ul className="favorites__bottom__movie-list">
-            {movieList?.results.map(movie => (
+            {moviesList.map(movie => (
               <li key={movie.id}>
                 <MovieCard {...movie} />
               </li>
@@ -36,7 +37,7 @@ function Favorites() {
           </ul>
         )}
 
-        {!movieList && (
+        {moviesList.length === 0 && (
           <div className="favorites__bottom__notfound">
             <h4>Sem favoritos</h4>
             <p>Você não adicionou nenhum favorito ainda.</p>
