@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import movieServices from '@services/TMDB/Discover/movie';
+import tmdbServices from '@services/TMDB';
 
 import MovieCard from '@components/cards/MovieCard';
 
@@ -11,12 +11,12 @@ function Home() {
   const [movieList, setMovieList] = useState<MovieList | null>(null);
 
   useEffect(() => {
-    const getMovies = async () => {
-      const response: MovieList = await movieServices.getMovie();
+    const getMoviesList = async () => {
+      const response: MovieList = await tmdbServices.movie.getPopularMovies();
       setMovieList(response);
     };
 
-    getMovies();
+    getMoviesList();
   }, [setMovieList]);
 
   return (
@@ -38,12 +38,11 @@ function Home() {
 
       <div className="home__bottom">
         <ul className="home__bottom__movie-list">
-          {movieList?.results &&
-            movieList.results.map(movie => (
-              <li key={movie.id}>
-                <MovieCard {...movie} />
-              </li>
-            ))}
+          {movieList?.results.map(movie => (
+            <li key={movie.id}>
+              <MovieCard {...movie} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>
