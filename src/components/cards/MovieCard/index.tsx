@@ -1,11 +1,24 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import classNames from 'classnames';
-import { Movie } from './types';
+
+import { toggleFavorite } from '@store/reducers/favorites';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Movie } from '@interfaces/Movie';
+import { StoreState } from '@interfaces/Redux';
+
 import './styles.scss';
 
 function MovieCard(props: Movie) {
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
-  const clickFavorite = (): void => setIsFavorite(state => !state);
+  const dispatch = useDispatch();
+
+  const isFavorite = useSelector((state: StoreState) =>
+    state.favorites.some(favorite => favorite.id === props.id)
+  );
+
+  const clickFavorite = (): void => {
+    dispatch(toggleFavorite(props));
+  };
 
   return (
     <div className="movie-card">
