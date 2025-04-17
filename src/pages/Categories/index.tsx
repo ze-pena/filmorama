@@ -6,7 +6,9 @@ import tmdbServices from '@services/TMDB';
 import GenreCard from '@components/cards/GenreCard';
 import MovieCard from '@components/cards/MovieCard';
 
-import { GenreList, MovieList } from './types';
+import { GenreList } from '@interfaces/Genre';
+import { MovieList } from '@interfaces/Movie';
+
 import './styles.scss';
 
 function Categories() {

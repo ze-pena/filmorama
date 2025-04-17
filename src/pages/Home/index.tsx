@@ -4,7 +4,8 @@ import tmdbServices from '@services/TMDB';
 
 import MovieCard from '@components/cards/MovieCard';
 
-import { MovieList } from './types';
+import { MovieList } from '@interfaces/Movie';
+
 import './styles.scss';
 
 function Home() {

@@ -1,10 +1,13 @@
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Genre } from './types';
+
+import { Genre } from '@interfaces/Genre';
+
 import './styles.scss';
 
 function GenreCard(props: Genre) {
   const navigate = useNavigate();
+
   const clickGenre = () => {
     navigate(`/categories/${props.id}`);
   };
