@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Genre } from './types';
 import './styles.scss';
@@ -17,4 +18,4 @@ function GenreCard(props: Genre) {
   );
 }
 
-export default GenreCard;
+export default memo(GenreCard);
