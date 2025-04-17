@@ -1,0 +1,84 @@
+@use '../../styles/scss/mixins/typography' as *;
+@use '../../styles/scss/variables/colors' as *;
+@use '../../styles/scss/variables/viewports' as *;
+
+.categories {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
+
+  &__top {
+    display: flex;
+    justify-content: center;
+
+    &__search {
+      flex-basis: 400px;
+      display: flex;
+      gap: 8px;
+      background-color: $search-background;
+      border-radius: 4px;
+      overflow: hidden;
+
+      input {
+        flex-grow: 1;
+        padding: 16px 16px 12px;
+        border: 0;
+        outline: none;
+        @include font-custom(14, 16, left, 'Inter', 400, $search-font);
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+          -webkit-appearance: none;
+        }
+
+        &::placeholder {
+          @include font-custom(14, 16, left, 'Inter', 400, $search-placeholder);
+        }
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        border: 0;
+        background-color: $search-button-background;
+
+        i {
+          font-size: 1.25rem;
+          color: $search-button-font;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    flex-grow: 1;
+    display: flex;
+
+    &__movie-list {
+      flex-grow: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      gap: 24px 16px;
+
+      li {
+        flex-grow: 1;
+        flex-basis: 100%;
+        display: flex;
+        min-height: 150px;
+
+        @media (min-width: $phone-viewport-3) {
+          flex-basis: calc($phone-viewport-1 - 32px);
+          max-width: $phone-viewport-1;
+        }
+      }
+    }
+  }
+}
