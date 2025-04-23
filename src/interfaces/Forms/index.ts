@@ -10,4 +10,8 @@ interface Button {
   name: string;
 }
 
-export type { Input, Button };
+type InputChange = React.ChangeEvent<HTMLInputElement>;
+
+type FormSubmit = React.FormEvent<HTMLFormElement>;
+
+export type { Input, Button, InputChange, FormSubmit };
