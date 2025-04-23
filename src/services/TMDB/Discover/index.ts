@@ -5,13 +5,16 @@ import { MovieSort } from '@interfaces/Movie';
 export default {
   async getMovieDiscover<T>(
     sort: MovieSort[] = ['popularity.desc'],
+    page: number = 1,
     genre?: number
   ): Promise<T> {
     const query = [];
 
-    if (genre) query.push(`with_genres=${genre}`);
-
     if (sort) query.push(`sort_by=${sort.join(',')}`);
+
+    if (page) query.push(`page=${page}`);
+
+    if (genre) query.push(`with_genres=${genre}`);
 
     const response = await fetchRequest<T>(
       `${TMDB_BASE_URL}/discover/movie${query.length ? `?${query.join('&')}` : ''}`,
