@@ -1,49 +1,38 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { updateSearchName } from '@store/reducers/search';
-
-import tmdbServices from '@services/TMDB';
+import { getMovieDiscover, getMovieSearch } from '@store/reducers/movies';
 
 import SearchInput from '@components/inputs/SearchInput';
 import MovieCard from '@components/cards/MovieCard';
 import SpinnerLoading from '@components/loaders/SpinnerLoading';
 
-import { MovieList } from '@interfaces/Movie';
-import { StoreState } from '@interfaces/Redux';
+import { FormSubmit, InputChange } from '@interfaces/Forms';
+import { StoreDispatch, StoreState } from '@interfaces/Redux';
 
 import './styles.scss';
 
 function Home() {
-  const [movieList, setMovieList] = useState<MovieList | null>(null);
-  const { name } = useSelector((state: StoreState) => state.search);
   const dispatch = useDispatch();
+  const storeDispatch = useDispatch<StoreDispatch>();
+  const { name } = useSelector((state: StoreState) => state.search);
+  const { results, isLoading } = useSelector(
+    (state: StoreState) => state.movies
+  );
 
-  const changeSearchName = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const changeSearchName = (event: InputChange): void => {
     dispatch(updateSearchName(event.target.value));
   };
 
-  const getPopularMoviesList = useCallback(async () => {
-    setMovieList(null);
-    const response: MovieList = await tmdbServices.movie.getPopularMovies();
-    setMovieList(response);
-  }, [setMovieList]);
-
-  const getSearchMoviesList = useCallback(async () => {
-    setMovieList(null);
-    const response: MovieList = await tmdbServices.search.getMovieSearch(name);
-    setMovieList(response);
-  }, [name, setMovieList]);
-
-  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = (event: FormSubmit): void => {
     event.preventDefault();
-    getSearchMoviesList();
+    storeDispatch(getMovieSearch({ query: name }));
   };
 
   useEffect(() => {
-    getPopularMoviesList();
-  }, [getPopularMoviesList]);
+    storeDispatch(getMovieDiscover({ sort: ['popularity.desc'] }));
+  }, [storeDispatch]);
 
   return (
     <div className="home">
@@ -57,16 +46,16 @@ function Home() {
       </form>
 
       <div className="home__bottom">
-        {movieList ? (
+        {isLoading ? (
+          <SpinnerLoading />
+        ) : (
           <ul className="home__bottom__movie-list">
-            {movieList?.results.map(movie => (
+            {results.map(movie => (
               <li key={movie.id}>
                 <MovieCard {...movie} />
               </li>
             ))}
           </ul>
-        ) : (
-          <SpinnerLoading />
         )}
       </div>
     </div>

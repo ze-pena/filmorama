@@ -15,6 +15,18 @@ type Movie = {
   vote_count: number;
 };
 
+type MovieSort =
+  | 'popularity.desc'
+  | 'popularity.asc'
+  | 'original_title.desc'
+  | 'original_title.asc'
+  | 'title.desc'
+  | 'title.asc'
+  | 'vote_average.desc'
+  | 'vote_average.asc'
+  | 'primary_release_date.desc'
+  | 'primary_release_date.asc';
+
 interface MovieList {
   page: number;
   results: Movie[];
@@ -22,4 +34,4 @@ interface MovieList {
   total_results: number;
 }
 
-export type { Movie, MovieList };
+export type { Movie, MovieSort, MovieList };
