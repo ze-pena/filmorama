@@ -1,8 +1,8 @@
-import { Input } from '@interfaces/Forms';
+import { Input, InputChange } from '@interfaces/Forms';
 
 interface Search extends Input {
   value?: string;
-  setter: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setter: (event: InputChange) => void;
 }
 
 import './styles.scss';
