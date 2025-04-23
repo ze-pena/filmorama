@@ -11,21 +11,6 @@ function Favorites() {
 
   return (
     <div className="favorites">
-      <div className="favorites__top">
-        <div className="favorites__top__search">
-          <input
-            placeholder="Search movie name"
-            type="search"
-            name="search"
-            id="search"
-          />
-
-          <button type="button">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </div>
-
       <div className="favorites__bottom">
         {moviesList.length > 0 && (
           <ul className="favorites__bottom__movie-list">
