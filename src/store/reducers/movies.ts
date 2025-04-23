@@ -10,8 +10,15 @@ export const getMovieGenre = createAsyncThunk('movies/genre', () =>
 
 export const getMovieDiscover = createAsyncThunk(
   'movies/discover',
-  ({ sort, genre }: { sort?: MovieSort[]; genre?: number }) =>
-    tmdbServices.discover.getMovieDiscover<MovieList>(sort, genre)
+  ({
+    sort,
+    page,
+    genre,
+  }: {
+    sort?: MovieSort[];
+    page?: number;
+    genre?: number;
+  }) => tmdbServices.discover.getMovieDiscover<MovieList>(sort, page, genre)
 );
 
 export const getMovieSearch = createAsyncThunk(
