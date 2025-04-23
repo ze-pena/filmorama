@@ -9,7 +9,7 @@ function GenreCard(props: Genre) {
   const navigate = useNavigate();
 
   const clickGenre = () => {
-    navigate(`/categories/${props.id}`);
+    navigate(`${props.id}`);
   };
 
   return (
