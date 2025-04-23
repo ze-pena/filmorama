@@ -23,7 +23,11 @@ function MovieCard(props: Movie) {
   return (
     <div className="movie-card">
       <img
-        src={`https://image.tmdb.org/t/p/w500${props.poster_path}`}
+        src={
+          props.poster_path
+            ? `https://image.tmdb.org/t/p/w500${props.poster_path}`
+            : '/images/movie-card_not-found.jpg'
+        }
         alt="Movie poster"
       />
 
@@ -41,7 +45,9 @@ function MovieCard(props: Movie) {
       <div className="movie-card__bottom">
         <span className="movie-card__bottom__name">{props.title}</span>
         <span className="movie-card__bottom__year">
-          {new Date(props.release_date).getFullYear()}
+          {props.release_date
+            ? new Date(props.release_date).getFullYear()
+            : 'Unknown'}
         </span>
       </div>
     </div>
