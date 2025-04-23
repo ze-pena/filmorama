@@ -10,19 +10,19 @@ function Default() {
       <header className="default__header">
         <nav className="default__header__navigation">
           <div className="default__header__navigation__title">
-            <Link to="/">
+            <Link to="">
               <h4>Filmorama</h4>
             </Link>
           </div>
 
           <menu className="default__header__navigation__list">
             <li>
-              <Link to="/categories">
+              <Link to="categories">
                 <i className="fa-solid fa-list"></i>
               </Link>
             </li>
             <li>
-              <Link to="/favorites">
+              <Link to="favorites">
                 <i className="fa-solid fa-heart"></i>
               </Link>
             </li>
@@ -44,7 +44,7 @@ function Default() {
                 className={classNames({
                   '--is-current': location.pathname === '/',
                 })}>
-                <Link to="/">
+                <Link to="">
                   <i className="fa-solid fa-house"></i>
                   <span>Home</span>
                 </Link>
@@ -53,7 +53,7 @@ function Default() {
                 className={classNames({
                   '--is-current': location.pathname.includes('/categories'),
                 })}>
-                <Link to="/categories">
+                <Link to="categories">
                   <i className="fa-solid fa-list"></i>
                   <span>Categories</span>
                 </Link>
@@ -62,7 +62,7 @@ function Default() {
                 className={classNames({
                   '--is-current': location.pathname === '/favorites',
                 })}>
-                <Link to="/favorites">
+                <Link to="favorites">
                   <i className="fa-solid fa-heart"></i>
                   <span>Favorites</span>
                 </Link>

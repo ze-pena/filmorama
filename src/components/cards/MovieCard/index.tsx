@@ -26,7 +26,7 @@ function MovieCard(props: Movie) {
         src={
           props.poster_path
             ? `https://image.tmdb.org/t/p/w500${props.poster_path}`
-            : '/images/movie-card_not-found.jpg'
+            : 'public/images/movie-card_not-found.jpg'
         }
         alt="Movie poster"
       />
