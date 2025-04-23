@@ -14,4 +14,6 @@ type InputChange = React.ChangeEvent<HTMLInputElement>;
 
 type FormSubmit = React.FormEvent<HTMLFormElement>;
 
-export type { Input, Button, InputChange, FormSubmit };
+type ButtonClick = React.MouseEvent<HTMLButtonElement>;
+
+export type { Input, Button, InputChange, FormSubmit, ButtonClick };
