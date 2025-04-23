@@ -1,0 +1,42 @@
+@use '../../../styles/scss/variables/colors' as *;
+@use '../../../styles/scss/variables/shadows' as *;
+@use '../../../styles/scss/mixins/typography' as *;
+
+.number-pagination {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.--current button {
+        cursor: not-allowed;
+        background-color: $pagination-background--current;
+      }
+
+      &:not(.--current) button {
+        cursor: pointer;
+        background-color: $pagination-background;
+      }
+
+      button {
+        width: 35px;
+        height: 35px;
+        outline: none;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: $shadow-primary-1;
+        @include font-custom(10, 14, center, 'Inter', 300, $pagination-font);
+      }
+    }
+  }
+}

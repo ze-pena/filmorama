@@ -1,0 +1,44 @@
+@use '../../../styles/scss/mixins/typography' as *;
+@use '../../../styles/scss/variables/colors' as *;
+
+.search-input {
+  flex-basis: 400px;
+  display: flex;
+  gap: 8px;
+  background-color: $search-background;
+  border-radius: 4px;
+  overflow: hidden;
+
+  input {
+    flex-grow: 1;
+    padding: 16px 16px 12px;
+    border: 0;
+    outline: none;
+    @include font-custom(14, 16, left, 'Inter', 400, $search-font);
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+
+    &::placeholder {
+      @include font-custom(14, 16, left, 'Inter', 400, $search-placeholder);
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: 0;
+    background-color: $search-button-background;
+
+    i {
+      font-size: 1.25rem;
+      color: $search-button-font;
+    }
+  }
+}
