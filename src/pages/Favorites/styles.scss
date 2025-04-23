@@ -2,17 +2,12 @@
 @use '../../styles/scss/variables/colors' as *;
 @use '../../styles/scss/variables/viewports' as *;
 
-.home {
+.favorites {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 32px;
   padding: 32px 16px;
-
-  &__top {
-    display: flex;
-    justify-content: center;
-  }
 
   &__bottom {
     flex-grow: 1;
@@ -36,6 +31,22 @@
           flex-basis: calc($phone-viewport-1 - 32px);
           max-width: $phone-viewport-1;
         }
+      }
+    }
+
+    &__notfound {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+
+      h4 {
+        @include font-custom(24, 48, center, 'Pacifico', 400, $notfound-title);
+      }
+
+      p {
+        @include font-custom(16, 24, center, 'Inter', 400, $notfound-paragraph);
       }
     }
   }

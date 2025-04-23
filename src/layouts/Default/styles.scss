@@ -92,6 +92,10 @@
           gap: 16px;
 
           li {
+            &.--is-current a {
+              color: $link-font-alternative;
+            }
+
             a {
               display: flex;
               align-items: center;

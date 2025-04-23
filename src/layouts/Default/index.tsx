@@ -1,7 +1,10 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import './styles.scss';
 
 function Default() {
+  const location = useLocation();
+
   return (
     <div className="default">
       <header className="default__header">
@@ -37,19 +40,28 @@ function Default() {
         <footer className="default__body__footer">
           <div className="default__body__footer__container">
             <menu>
-              <li>
+              <li
+                className={classNames({
+                  '--is-current': location.pathname === '/',
+                })}>
                 <Link to="/">
                   <i className="fa-solid fa-house"></i>
                   <span>Home</span>
                 </Link>
               </li>
-              <li>
+              <li
+                className={classNames({
+                  '--is-current': location.pathname.includes('/categories'),
+                })}>
                 <Link to="/categories">
                   <i className="fa-solid fa-list"></i>
                   <span>Categories</span>
                 </Link>
               </li>
-              <li>
+              <li
+                className={classNames({
+                  '--is-current': location.pathname === '/favorites',
+                })}>
                 <Link to="/favorites">
                   <i className="fa-solid fa-heart"></i>
                   <span>Favorites</span>

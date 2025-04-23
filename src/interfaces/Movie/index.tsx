@@ -1,4 +1,4 @@
-interface Movie {
+type Movie = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,6 +13,13 @@ interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+interface MovieList {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
 }
 
-export type { Movie };
+export type { Movie, MovieList };
